@@ -1,6 +1,7 @@
 using namespace std;
 
 #include <iostream>
+#include "Gradebook.h"
 
 void quadraticSolver(int a, int b, int c, double& xIntercept1, double& xIntercept2) {
 	if (a == 0) {
@@ -20,6 +21,26 @@ void quadraticSolver(int a, int b, int c, double& xIntercept1, double& xIntercep
 
 int main()
 {
+	Gradebook cis200GradeBook("CIS 200", 35);
+
+	Student bob = cis200GradeBook.getStudent(0);
+	bob.setName("Bob");
+	bob.setId(123);
+	
+	Gradebook cis200bGradeBook("CIS 200b", 50);
+	cis200bGradeBook = cis200GradeBook;
+
+	Gradebook anotherGradeBook(cis200bGradeBook);
+
+
+	for (int classIndex = 0; classIndex < 1000; classIndex++) {
+		Gradebook* gradebook = new Gradebook("some class", 50);
+		delete gradebook;
+	}
+	
+
+
+
 	int number = 42;
 	int* anotherNumber;
 
