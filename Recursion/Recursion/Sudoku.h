@@ -35,7 +35,7 @@ private:
 	}
 
 	bool isValueUniqueInRow(int rowIndex, int value) {
-		return count(board.begin(), board.end(), value) == 0;
+		return count(board.at(rowIndex).begin(), board.at(rowIndex).end(), value) == 0;
 	}
 
 	bool isValueUniqueInColumn(int columnIndex, int value) {
