@@ -48,13 +48,13 @@ private:
 	}
 
 	bool isValueUniqueInGrid(int rowIndex, int columnIndex, int value) {
-		int startingRowIndex = rowIndex / 3;
-		int startingColumnIndex = columnIndex / 3;
+		int startingRowIndex = rowIndex / 3 * 3;
+		int startingColumnIndex = columnIndex / 3 * 3;
 
-		for (int currentRowIndex = startingRowIndex * 3;
+		for (int currentRowIndex = startingRowIndex;
 			currentRowIndex < startingRowIndex + 3;
 			currentRowIndex++) {
-			for (int currentColumnIndex = startingColumnIndex * 3;
+			for (int currentColumnIndex = startingColumnIndex;
 				currentColumnIndex < startingColumnIndex + 3;
 				currentColumnIndex++) {
 				if (board.at(currentRowIndex).at(currentColumnIndex) == value) {
