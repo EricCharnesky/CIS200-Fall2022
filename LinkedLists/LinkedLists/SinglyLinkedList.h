@@ -11,9 +11,9 @@ private:
 	class Node {
 	public:
 		T data;
-		Node* next;
+		Node<T>* next;
 
-		Node(T data; Node* next = nullptr) {
+		Node(T data, Node<T>* next = nullptr) {
 			this->data = data;
 			this->next = next;
 		}
@@ -42,7 +42,7 @@ public:
 	}
 
 	T at(int index) {
-		if (index > numberOfItems) {
+		if (index >= numberOfItems) {
 			throw logic_error("invalid index");
 		}
 
@@ -51,6 +51,7 @@ public:
 
 		while (currentIndex != index) {
 			currentNode = currentNode->next;
+			currentIndex++;
 		}
 
 		return currentNode->data;
