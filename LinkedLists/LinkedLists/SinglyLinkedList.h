@@ -22,6 +22,8 @@ private:
 	Node<T>* first;
 	int numberOfItems;
 
+public:
+
 	SinglyLinkedList() {
 		first = nullptr;
 		numberOfItems = 0;
@@ -69,7 +71,5 @@ private:
 
 		return currentIndex;
 	}
-
-public:
 
 };
