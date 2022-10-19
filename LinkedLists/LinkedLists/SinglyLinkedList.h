@@ -27,6 +27,12 @@ private:
 		numberOfItems = 0;
 	}
 
+	// TODO - destructor
+
+	// TODO - copy assignment operator
+
+	// TODO - copy constructor
+
 	void add(T data) {
 		Node<T>* newNode = new Node<T>(data, first);
 		first = newNode;
