@@ -20,6 +20,7 @@ private:
 	};
 
 	Node<T>* first;
+	Node<T>* last;
 	int numberOfItems;
 
 public:
@@ -35,10 +36,28 @@ public:
 
 	// TODO - copy constructor
 
-	void add(T data) {
+	void add_front(T data) {
 		Node<T>* newNode = new Node<T>(data, first);
 		first = newNode;
+		// must be the first item if it was empty before
+		if (numberOfItems == 0) {
+			last = newNode;
+		}
 		numberOfItems++;
+	}
+
+	void add_back(T data) {
+		// don't do more work than we need to
+		if (last == nullptr) {
+			add_front(data);
+		}
+		else {
+			Node<T>* newNode = new Node<T>(data);
+			last->next = newNode;
+			last = newNode;
+			numberOfItems++;
+		}
+		
 	}
 
 	T at(int index) {
