@@ -1,14 +1,12 @@
 #pragma once
 
-#pragma once
-
 using namespace std;
 
 #include <stdexcept>
 #include <iostream>
 
 template <typename T>
-class DoublyLinkedList {
+class CircularDoublyLinkedList {
 private:
 	template <typename T>
 	class Node {
@@ -48,6 +46,8 @@ private:
 
 	void add_between(T data, Node<T>* next, Node<T>* previous) {
 		Node<T>* newNode = new Node<T>(data, next, previous);
+		newNode->previous->next = newNode;
+		newNode->next->previous = newNode;
 		numberOfItems++;
 	}
 
@@ -97,7 +97,7 @@ public:
 		}
 
 		int currentIndex = 0;
-		Node<T>* currentNode = first;
+		Node<T>* currentNode = start->next;
 
 		while (currentIndex != index) {
 			currentNode = currentNode->next;
@@ -110,7 +110,7 @@ public:
 
 	void add_at(T data, int index) {
 		int currentIndex = 0;
-		Node<T>* currentNode = first;
+		Node<T>* currentNode = start->next;
 
 		while (currentIndex != index) {
 			currentNode = currentNode->next;
@@ -130,7 +130,7 @@ public:
 		//  and start at last working backwards
 
 		int currentIndex = 0;
-		Node<T>* currentNode = first;
+		Node<T>* currentNode = start->next;
 
 		while (currentIndex != index) {
 			currentNode = currentNode->next;
@@ -138,6 +138,10 @@ public:
 		}
 
 		return currentNode->data;
+	}
+
+	int size() {
+		return this->numberOfItems;
 	}
 
 	int indexOf(T data) {
