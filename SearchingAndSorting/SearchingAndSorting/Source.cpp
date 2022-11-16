@@ -3,6 +3,7 @@
 
 // 3 10 21 23
 
+// 3 10 15 21 23
 
 
 // find 23
@@ -16,6 +17,10 @@ void insertionSort(vector<int>& numbers) {
 	for (int currentIndex = 1; currentIndex < numbers.size(); currentIndex++) {
 		int indexToCheck = currentIndex;
 		while (indexToCheck >= 1 && numbers.at(indexToCheck) < numbers.at(indexToCheck - 1)) {
+			int temp = numbers.at(indexToCheck);
+			numbers.at(indexToCheck) = numbers.at(indexToCheck - 1);
+			numbers.at(indexToCheck - 1) = temp;
+			indexToCheck--;
 
 		}
 	}
@@ -70,7 +75,7 @@ int recursiveBinarySearch(vector<int> numbers,
 int main() {
 	vector<int> numbers = { 23, 10, 31, 3 };
 
-	selectionSort(numbers);
+	insertionSort(numbers);
 	
 
 	for (int number : numbers) {
