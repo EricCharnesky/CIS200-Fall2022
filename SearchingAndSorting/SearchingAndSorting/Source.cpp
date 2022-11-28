@@ -13,13 +13,27 @@
 
 using namespace std;
 
-void insertionSort(vector<int>& numbers) {
-	for (int currentIndex = 1; currentIndex < numbers.size(); currentIndex++) {
+
+class Student {
+public:
+	int idNumber;
+	string name;
+
+	bool operator< (const Student& other) {
+		return idNumber < other.idNumber;
+	}
+};
+
+
+
+template<typename T>
+void insertionSort(vector<T>& values) {
+	for (int currentIndex = 1; currentIndex < values.size(); currentIndex++) {
 		int indexToCheck = currentIndex;
-		while (indexToCheck >= 1 && numbers.at(indexToCheck) < numbers.at(indexToCheck - 1)) {
-			int temp = numbers.at(indexToCheck);
-			numbers.at(indexToCheck) = numbers.at(indexToCheck - 1);
-			numbers.at(indexToCheck - 1) = temp;
+		while (indexToCheck >= 1 && values.at(indexToCheck) < values.at(indexToCheck - 1)) {
+			T temp = values.at(indexToCheck);
+			values.at(indexToCheck) = values.at(indexToCheck - 1);
+			values.at(indexToCheck - 1) = temp;
 			indexToCheck--;
 
 		}
@@ -73,6 +87,20 @@ int recursiveBinarySearch(vector<int> numbers,
 
 
 int main() {
+
+	vector<Student> students;
+	Student first = Student();
+	first.idNumber = 10;
+	first.name = "Eric";
+	students.push_back(first);
+
+	Student second = Student();
+	second.idNumber = 5;
+	second.name = "Jeb";
+	students.push_back(second);
+
+	insertionSort(students);
+
 	vector<int> numbers = { 23, 10, 31, 3 };
 
 	insertionSort(numbers);
